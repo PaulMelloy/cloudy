@@ -4,14 +4,15 @@
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of usq.scp is to ...
+The goal of usq.scp is to import data from AARNET Cloudstor, MS OneDrive and
+SharePoint.
 
 ## Installation
 
-You can install the released version of usq.scp from [CRAN](https://CRAN.R-project.org) with:
+You can install usq.scp from [GitHub](https://github.com/adamhsparks/usq.scp) with:
 
 ``` r
-install.packages("usq.scp")
+remotes::install_github("adamhsparks/usq.scp")
 ```
 
 ## Example
