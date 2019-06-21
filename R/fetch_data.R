@@ -5,4 +5,22 @@
 
 fetch_data <- function(url) {
 
+  # create a file object in the tempdir() to store and read the download
+  f <- file.path(tempdir(), "tmp")
+
+  # download the file
+  curl::curl_download(url = url, destfile = f, mode = "wb")
+
+  # determine the file type so that we can import
+  ft <- dqmagic::file_type(f)
+
+  # import the file
+  if (ft == "Microsoft Excel 2007+") {
+    file.rename(f, paste0(f, ".xlsx"))
+    f <- paste0(f, ".xlsx")
+  }
+
+  # import file
+  f <- rio::import(file = f)
+  return(f)
 }

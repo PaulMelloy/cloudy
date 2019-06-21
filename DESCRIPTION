@@ -14,5 +14,11 @@ Encoding: UTF-8
 LazyData: true
 Imports:
   curl,
+  dqmagic,
+  dplyr,
+  httr,
   rio
+Remotes:
+  daqana/dqmagic
 URL: https://github.com/adamhsparks/usq.scp
+RoxygenNote: 6.1.1
