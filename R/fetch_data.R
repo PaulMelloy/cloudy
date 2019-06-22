@@ -28,11 +28,11 @@ fetch_data <- function(url,
     f <- rio::import(file = url, which = which)
   }
   # if the URL says it's a .csv import it
-  if (grepl(".csv", url)) {
+  if  (substr(url, nchar(url) - 3, nchar(url)) == ".csv") {
     f <- rio::import(file = url)
   }
   # if the URL says it's a .txt file, import it
-  if (grepl(".txt", url)) {
+  if (substr(url, nchar(url) - 3, nchar(url)) == ".txt") {
     f <- rio::import(file = url, which = which)
   } else {
   # otherwise we'll download it and figure out what we have
