@@ -12,9 +12,10 @@ supported filetypes of \code{\link[rio:import]{rio::import()}}, also works with 
 other provider from which a raw data file can be downloaded and imported.
 Character.}
 
-\item{which}{User provided spreadhseet for '.xslx' and '.ods' files either
-as the number of the sheet in order or the name of the sheet. For .Rdata
-objects it can be an object name. See \code{\link[rio:import]{rio::import()}} for further details}
+\item{which}{User provided spreadhseet for '.xslx', 'Google Sheets' and
+'.ods' files either as the number of the sheet in order or the name of the
+sheet. For .Rdata objects it can be an object name. See \code{\link[rio:import]{rio::import()}} for
+further details}
 
 \item{file_ext}{Optional user provided file type extension. If provided,
 \code{fetch_data()} will attempt to use this as instruction about the file
