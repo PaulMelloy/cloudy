@@ -4,8 +4,9 @@
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of usq.scp is to import data from AARNET Cloudstor, MS OneDrive and
-SharePoint.
+The goal of usq.scp is to import data from  AARNET Cloudstor, OneDrive,
+Sharepoint, GDrive, GitHub or any other web-based provider serving a file via
+a downloadable URL.
 
 ## Installation
 
@@ -21,7 +22,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(usq.scp)
-## basic example code
+P_sojae <-
+  fetch_data(url = "https://raw.githubusercontent.com/openplantpathology/hagis/master/inst/extdata/practice_data_set.csv")
 ```
 
 # Meta

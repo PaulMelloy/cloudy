@@ -26,42 +26,50 @@ fetch_data <- function(url,
   # if this is a Google Sheets object, import it
   if (grepl("docs.google.com/spreadsheets", url)) {
     f <- rio::import(file = url, which = which)
-  } else {
-    # otherwise we'll download it and figure out what we have
-    # create a file object in the tempdir() to store and read the download
-    f <- file.path(tempdir(), "tmp")
-    # download the file
-    curl::curl_download(url = url,
-                        destfile = f,
-                        mode = "wb")
-    # did the user give us a file extension?
-    if (!is.null(file_ext)) {
-      # did the user include the "." before the file extension?
-      if (substr(file_ext, 1, 1) != ".") {
-        file_ext <- paste0(".", file_ext)
-      }
-      # create a full filename and extension
-      f <- paste0(f, file_ext)
-    } else {
-      # determine the file type so that we can import the file
-      ft <- dqmagic::file_type(f)
-
-      # import the file
-      if (ft == "Microsoft Excel 2007+") {
-        file.rename(f, paste0(f, ".xlsx"))
-        f <- paste0(f, ".xlsx")
-      } else if (ft == "ASCII text") {
-        file.rename(f, paste0(f, ".txt"))
-        f <- paste0(f, ".txt")
-      } else
-        stop("Cannot determine the file type. Please provide a file extension.")
-    }
-
-    # finally import file
-    if (!is.null(which)) {
-      f <- rio::import(file = f, which = which)
-    } else
-      f <- rio::import(file = f)
   }
-  return(as.data.frame(f))
+  # if the URL says it's a .csv import it
+  if (grepl(".csv", url)) {
+    f <- rio::import(file = url)
+  }
+  # if the URL says it's a .txt file, import it
+  if (grepl(".txt", url)) {
+    f <- rio::import(file = url, which = which)
+  } else {
+  # otherwise we'll download it and figure out what we have
+  # create a file object in the tempdir() to store and read the download
+  f <- file.path(tempdir(), "tmp")
+  # download the file
+  curl::curl_download(url = url,
+                      destfile = f,
+                      mode = "wb")
+  # did the user give us a file extension?
+  if (!is.null(file_ext)) {
+    # did the user include the "." before the file extension?
+    if (substr(file_ext, 1, 1) != ".") {
+      file_ext <- paste0(".", file_ext)
+    }
+    # create a full filename and extension
+    f <- paste0(f, file_ext)
+  } else {
+    # determine the file type so that we can import the file
+    ft <- dqmagic::file_type(f)
+
+    # import the file
+    if (ft == "Microsoft Excel 2007+") {
+      file.rename(f, paste0(f, ".xlsx"))
+      f <- paste0(f, ".xlsx")
+    } else if (ft == "ASCII text") {
+      file.rename(f, paste0(f, ".txt"))
+      f <- paste0(f, ".txt")
+    } else
+      stop("Cannot determine the file type. Please provide a file extension.")
+  }
+
+  # finally import file
+  if (!is.null(which)) {
+    f <- rio::import(file = f, which = which)
+  } else
+    f <- rio::import(file = f)
+}
+return(as.data.frame(f))
 }
