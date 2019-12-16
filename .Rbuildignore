@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 ^usq\.Rproj$
 ^\.github$
+^codemeta\.json$

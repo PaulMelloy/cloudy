@@ -21,6 +21,7 @@ Imports:
 Remotes:
   daqana/dqmagic
 URL: https://github.com/adamhsparks/usq.scp
+BugReports: https://github.com/adamhsparks/usq.scp/issues
 RoxygenNote: 7.0.1
 Roxygen: list(markdown = TRUE)
 Language: en-AU

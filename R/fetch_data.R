@@ -41,7 +41,7 @@ fetch_data <- function(url,
   # download the file
   #
   # if the file is in OneDrive modify the URL to download the file
-  if (substr(url, 1, 32) == "https://usqprd-my.sharepoint.com") {
+  if (grepl("https://usqprd-my.sharepoint.com", url)) {
     url <- gsub("\\?.*$", "\\?download=1", url)
   }
 
