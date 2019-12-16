@@ -39,6 +39,12 @@ fetch_data <- function(url,
   # create a file object in the tempdir() to store and read the download
   f <- file.path(tempdir(), "tmp")
   # download the file
+  #
+  # if the file is in OneDrive modify the URL to download the file
+  if (substr(url, 1, 32) == "https://usqprd-my.sharepoint.com/") {
+    url <- gsub("\\?.*$", "\\?download=1", url)
+  }
+
   curl::curl_download(url = url,
                       destfile = f,
                       mode = "wb")
