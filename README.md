@@ -10,10 +10,10 @@ a downloadable URL.
 
 ## Installation
 
-You can install usq.scp from [GitHub](https://github.com/adamhsparks/usq.scp) with:
+You can install cloudy from [GitHub](https://github.com/adamhsparks/cloudy) with:
 
 ``` r
-remotes::install_github("adamhsparks/usq.scp")
+devtools::install_github("adamhsparks/cloudy")
 ```
 
 ## Example
@@ -21,7 +21,7 @@ remotes::install_github("adamhsparks/usq.scp")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(usq.scp)
+library(cloudy)
 P_sojae <-
   fetch_data(url = "https://raw.githubusercontent.com/openplantpathology/hagis/master/inst/extdata/practice_data_set.csv")
 ```
