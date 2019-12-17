@@ -1,10 +1,10 @@
-# usq.scp
+# cloudy
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of usq.scp is to import data from  AARNET Cloudstor, OneDrive,
+The goal of cloudy is to import data from  AARNET Cloudstor, OneDrive,
 Sharepoint, GDrive, GitHub or any other web-based provider serving a file via
 a downloadable URL.
 
@@ -28,5 +28,5 @@ P_sojae <-
 
 # Meta
 
-Please note that the 'usq.scp' project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree
+Please note that the 'cloudy' project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree
 to abide by its terms.

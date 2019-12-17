@@ -23,6 +23,7 @@
 fetch_data <- function(url,
                        which = NULL,
                        file_ext = NULL) {
+  # if no file_ext provided, stop
   # if this is a Google Sheets object, import it
   if (grepl("docs.google.com/spreadsheets", url)) {
     f <- rio::import(file = url, which = which)
@@ -56,19 +57,6 @@ fetch_data <- function(url,
     }
     # create a full filename and extension
     f <- paste0(f, file_ext)
-  } else {
-    # determine the file type so that we can import the file
-    ft <- dqmagic::file_type(f)
-
-    # import the file
-    if (ft == "Microsoft Excel 2007+") {
-      file.rename(f, paste0(f, ".xlsx"))
-      f <- paste0(f, ".xlsx")
-    } else if (ft == "ASCII text") {
-      file.rename(f, paste0(f, ".txt"))
-      f <- paste0(f, ".txt")
-    } else
-      stop("Cannot determine the file type. Please provide a file extension.")
   }
 
   # finally import file
