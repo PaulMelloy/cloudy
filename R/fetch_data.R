@@ -46,9 +46,7 @@ fetch_data <- function(url,
     url <- gsub("\\?.*$", "\\?download=1", url)
   }
 
-  curl::curl_download(url = url,
-                      destfile = f,
-                      mode = "wb")
+
   # did the user give us a file extension?
   if (!is.null(file_ext)) {
     # did the user include the "." before the file extension?
@@ -58,6 +56,10 @@ fetch_data <- function(url,
     # create a full filename and extension
     f <- paste0(f, file_ext)
   }
+
+  curl::curl_download(url = url,
+                      destfile = f,
+                      mode = "wb")
 
   # finally import file
   if (!is.null(which)) {
